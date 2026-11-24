@@ -1,26 +1,127 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --bg: #fff6f2;
+  --card: #fffdfb;
+  --ink: #4a3640;
+  --soft: #8a6b78;
+  --rose: #e58a9e;
+  --rose-dark: #c96b80;
+  --rose2: #f6c9d3;
+  --line: #f1d9df;
+  --fur: #fbe3c8;
+  --gold: #d4af37;
+  --gold-soft: #f3e5ab;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #241a20;
+    --card: #2f2229;
+    --ink: #f6e4ea;
+    --soft: #c9a6b3;
+    --line: #4a3640;
+    --fur: #e9c9a8;
   }
 }
 
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #241a20;
+  --card: #2f2229;
+  --ink: #f6e4ea;
+  --soft: #c9a6b3;
+  --line: #4a3640;
+  --fur: #e9c9a8;
+}
+
+html {
+  height: auto;
+  scroll-behavior: smooth;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: "Quicksand", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overflow-x: hidden;
+}
+
+.font-serif-title {
+  font-family: "Cormorant Garamond", Georgia, serif;
+}
+
+@keyframes fl {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(3deg);
+  }
+}
+
+.animate-float {
+  animation: fl 4s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: fl 4s ease-in-out infinite 0.6s;
+}
+
+.animate-hint {
+  animation: fl 2.5s ease-in-out infinite;
+}
+
+@keyframes pulse-gentle {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(229, 138, 158, 0.4);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px 6px rgba(229, 138, 158, 0.3);
+  }
+}
+
+.animate-pulse-seal {
+  animation: pulse-gentle 2.5s infinite ease-in-out;
+}
+
+@keyframes dn {
+  to {
+    transform: translateY(115vh) rotate(360deg);
+  }
+}
+
+.heart-fall {
+  animation: dn linear forwards;
+}
+
+@keyframes fi {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fi 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
 }
